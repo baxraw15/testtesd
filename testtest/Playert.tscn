@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://bpoyiprfdfv3u"]
+
+[ext_resource type="Texture2D" uid="uid://ddgwjkew6iffx" path="res://knight/Idle/idle1.png" id="1_0t71g"]
+[ext_resource type="Texture2D" uid="uid://dbm10847ew2xv" path="res://knight/Idle/idle2.png" id="2_gf4ye"]
+[ext_resource type="Texture2D" uid="uid://qiixwer2gvnw" path="res://knight/Idle/idle3.png" id="3_emki7"]
+[ext_resource type="Texture2D" uid="uid://kit8hjk2ykj7" path="res://knight/Idle/idle4.png" id="4_bdoyd"]
+[ext_resource type="Texture2D" uid="uid://deos1wpce0o6c" path="res://knight/Idle/idle5.png" id="5_v5d1m"]
+[ext_resource type="Texture2D" uid="uid://dgiqcrmtham1o" path="res://knight/Idle/idle6.png" id="6_ubhd1"]
+[ext_resource type="Texture2D" uid="uid://51xpbjijsyhk" path="res://knight/Idle/idle7.png" id="7_ygifm"]
+[ext_resource type="Texture2D" uid="uid://bwd3q5yba42ne" path="res://knight/Idle/idle8.png" id="8_j210s"]
+[ext_resource type="Texture2D" uid="uid://cj0gt5hxlfwy7" path="res://knight/Idle/idle9.png" id="9_y1ate"]
+[ext_resource type="Texture2D" uid="uid://g3nxxxt4mnjt" path="res://knight/Idle/idle10.png" id="10_ca2ut"]
+[ext_resource type="Texture2D" uid="uid://bpysvura0vd3q" path="res://knight/Idle/idle11.png" id="11_i6ww3"]
+[ext_resource type="Texture2D" uid="uid://b16ie6s016vgx" path="res://knight/Idle/idle12.png" id="12_i1hgn"]
+
+[sub_resource type="GDScript" id="GDScript_0t71g"]
+script/source = "extends CharacterBody2D
+
+
+@export var SPEED = 200.0
+@export var ACCLERATION = 20.0
+@export var FRICTION = 10.0
+
+
+func _physics_process(delta: float) -> void:
+	
+	
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction := Input.get_vector(\"left\",\"right\",\"up\",\"down\").normalized()
+	if direction:
+		velocity = velocity.move_toward(direction * SPEED, ACCLERATION)
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
+
+	move_and_slide()
+"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_njshm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0t71g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gf4ye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_emki7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bdoyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v5d1m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ubhd1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ygifm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_j210s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_y1ate")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ca2ut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_i6ww3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_i1hgn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0t71g"]
+size = Vector2(6, 9)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=24353176]
+script = SubResource("GDScript_0t71g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1605754135]
+scale = Vector2(0.1875, 0.1875)
+sprite_frames = SubResource("SpriteFrames_njshm")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=454269032]
+position = Vector2(-4, 4.5)
+shape = SubResource("RectangleShape2D_0t71g")
+
+[node name="Timer" type="Timer" parent="." unique_id=214732342]

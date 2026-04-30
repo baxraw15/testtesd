@@ -1,10 +1,3 @@
 [gd_scene format=3 uid="uid://beipeqlofpcv5"]
 
-[node name="Node2D" type="Node2D" unique_id=536681557]
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1294227861]
-particle_flag_align_y = true
-angular_velocity_min = -712.87
-angular_velocity_max = -712.87
-orbit_velocity_min = 435.64
-orbit_velocity_max = 435.64
+[node name="Level 1" type="Node2D" unique_id=536681557]
