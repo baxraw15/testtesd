@@ -17,17 +17,14 @@
 script/source = "extends CharacterBody2D
 
 
-@export var SPEED = 200.0
+@export var SPEED = 75.0
 @export var ACCLERATION = 20.0
 @export var FRICTION = 10.0
 
 
 func _physics_process(delta: float) -> void:
 	
-	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_vector(\"left\",\"right\",\"up\",\"down\").normalized()
+	var direction := Input.get_vector(\"left\",\"right\",\"up\",\"down\")
 	if direction:
 		velocity = velocity.move_toward(direction * SPEED, ACCLERATION)
 	else:

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://coug2j5gimy8f"]
+
+[ext_resource type="Texture2D" uid="uid://b3ah62uqqa00" path="res://Ultimate weapon.png" id="1_mawn3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wt88"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s4gn3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mawn3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="knife" type="Area2D" unique_id=309385546]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=931415749]
+shape = SubResource("RectangleShape2D_8wt88")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1479338720]
+sprite_frames = SubResource("SpriteFrames_s4gn3")
