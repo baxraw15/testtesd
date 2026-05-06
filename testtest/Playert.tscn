@@ -20,8 +20,8 @@ script/source = "extends CharacterBody2D
 @export var SPEED = 75.0
 @export var ACCLERATION = 20.0
 @export var FRICTION = 10.0
+const KNIFE = preload(\"uid://coug2j5gimy8f\")
 
-\"res://knife.tscn\"
 
 func _physics_process(delta: float) -> void:
 	
@@ -35,8 +35,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_knife_timer_timeout():
- var knife = KNIFE.instantiate()
-knife.global_position + global_position
+	var knife = KNIFE.instantiate()
+	knife.global_position + global_position
 "
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_njshm"]
@@ -88,9 +88,6 @@ size = Vector2(6, 9)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=24353176]
 script = SubResource("GDScript_0t71g")
-SPEED = null
-ACCLERATION = null
-FRICTION = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1605754135]
 scale = Vector2(0.1875, 0.1875)
