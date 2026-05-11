@@ -16,39 +16,31 @@
 [sub_resource type="GDScript" id="GDScript_0t71g"]
 script/source = "extends CharacterBody2D
 
-@export var SPEED = 75.0
-@export var ACCELERATION = 20.0
-@export var FRICTION = 10.0
-const KNIFE = preload(\"res://knife.tscn\")
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-@onready var world = get_node('/root/Level 1')
+@export var SPEED = 75.0
+@export var ACCLERATION = 20.0
+@export var FRICTION = 10.0
+const KNIFE = preload(\"./knife\")
+
+
+
+@onready var world = get_node('/root/level_1')
 
 
 func _physics_process(delta: float) -> void:
 	
-	var direction = Input.get_vector(\"left\",\"right\",\"up\",\"down\").normalized()
+	var direction := Input.get_vector(\"left\",\"right\",\"up\",\"down\")
 	if direction:
-		velocity = velocity.move_toward(direction * SPEED, ACCELERATION)
+		velocity = velocity.move_toward(direction * SPEED, ACCLERATION)
 	else:
-		velocity= velocity.move_toward(Vector2.ZERO,FRICTION)
-		
-	if velocity.x>0:
-		sprite.flip_h=true
-	elif velocity.x<0:
-		sprite.flip_h=false
-		
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
 
 	move_and_slide()
 
 
-
-	
-
-
-func _on_knife_timer_timeout() -> void:
+func _on_knife_timer_timeout():
 	var knife = KNIFE.instantiate()
-	knife.global_position=global_position
+	knife.global_position + global_position
 	world.add_child(knife)
 "
 
@@ -101,6 +93,9 @@ size = Vector2(6, 9)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=24353176]
 script = SubResource("GDScript_0t71g")
+SPEED = null
+ACCLERATION = null
+FRICTION = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1605754135]
 scale = Vector2(0.1875, 0.1875)
