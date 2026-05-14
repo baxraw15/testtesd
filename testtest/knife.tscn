@@ -2,6 +2,20 @@
 
 [ext_resource type="Texture2D" uid="uid://b3ah62uqqa00" path="res://Ultimate weapon.png" id="1_mawn3"]
 
+[sub_resource type="GDScript" id="GDScript_mawn3"]
+script/source = "extends Area2D
+
+@export var SPEED = 350
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta:):
+	translate(Vector2.RIGHT.rotated(rotation) * SPEED * delta)
+"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_mawn3"]
 radius = 5.0
 
@@ -43,6 +57,7 @@ _data = {
 }
 
 [node name="knife" type="Area2D" unique_id=309385546]
+script = SubResource("GDScript_mawn3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=931415749]
 shape = SubResource("CircleShape2D_mawn3")
