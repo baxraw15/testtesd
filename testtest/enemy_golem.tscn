@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cnucil3f1gocr"]
+
+[ext_resource type="Texture2D" uid="uid://ybnywis27iw4" path="res://1.png" id="1_1eb1p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1eb1p"]
+radius = 13.152946
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vns54"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1eb1p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EnemyGolem" type="CharacterBody2D" unique_id=482909863]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1796654531]
+shape = SubResource("CircleShape2D_1eb1p")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="CollisionShape2D" unique_id=1295535613]
+position = Vector2(1, -4.7683716e-07)
+scale = Vector2(0.395, 0.395)
+sprite_frames = SubResource("SpriteFrames_vns54")
+
+[node name="HurtBox" type="Area2D" parent="CollisionShape2D/Sprite" unique_id=2005520935]
+position = Vector2(-50, 2)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/Sprite/HurtBox" unique_id=1389256531]
+
+[node name="DamageTimer" type="Timer" parent="CollisionShape2D/Sprite/HurtBox" unique_id=252442734]
