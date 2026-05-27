@@ -100,7 +100,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0t71g"]
 size = Vector2(6, 9)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=24353176]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=24353176 groups=["Player"]]
 script = SubResource("GDScript_0t71g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1605754135]
